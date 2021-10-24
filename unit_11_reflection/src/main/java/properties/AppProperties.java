@@ -54,6 +54,7 @@ public class AppProperties {
                 throw new RuntimeException("invalid format of data in file app.properties: ", e);
             }
         }
+        if(field.getType().equals(boolean.class)) return Boolean.parseBoolean(propertyString);
         if (field.getType().equals(int.class)
                 || field.getType().equals(Integer.class))
             return Integer.parseInt(propertyString);

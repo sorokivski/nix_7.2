@@ -13,18 +13,29 @@ public class Purchase {
     public String buyerFullName;
     @PropertyKey(value = "dateOfPurchase")
     public String dateOfPurchase;
+    @PropertyKey(value = "isValid")
+    public boolean isValid;
 
     public Purchase() {
 
     }
 
     public String toString() {
-        return "***********************************\n" +
+       if(isValid)
+        return "*********CONFIRMED***********\n" +
                 "Data about purchase:" +
                 "\n__________________________\nid:  " + id + "\n__________________________\n" +
                 "price for ordered goods: " + costOfGoods +
                 "\n__________________________\n price for shipment: " + costOfShipment
                 + "\n__________________________\n date of purchase: " + dateOfPurchase
                 + "\n__________________________\n customer: " + buyerFullName + "\n*************************************";
+       else
+           return "*******NOT CONFIRMED YET********\n" +
+                   "Data about purchase:" +
+                   "\n__________________________\nid:  " + id + "\n__________________________\n" +
+                   "price for ordered goods: " + costOfGoods +
+                   "\n__________________________\n price for shipment: " + costOfShipment
+                   + "\n__________________________\n date of purchase: " + dateOfPurchase
+                   + "\n__________________________\n customer: " + buyerFullName + "\n*************************************";
     }
 }
