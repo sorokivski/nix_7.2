@@ -10,6 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>unit_10_jdbc</module>
+        <module>unit_13_hibernate</module>
+        <module>unit_14_concurrency</module>
+        <module>unit_11_reflection</module>
+        <module>unit_12_csv</module>
     </modules>
 
     <properties>
