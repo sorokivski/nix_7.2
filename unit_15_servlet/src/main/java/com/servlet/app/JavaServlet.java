@@ -16,7 +16,8 @@ public class JavaServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManager em = emf.createEntityManager();
         PrintWriter out = response.getWriter();
         out.write("<html>");
         out.write("<head><title>LIST</title><link rel=\"shortcut icon\" href=\"image/anony.jpg\" type=\"image/x-icon\"/></head>");
@@ -24,16 +25,19 @@ public class JavaServlet extends HttpServlet {
 
         String host = request.getRemoteHost();
         String agent = request.getHeader("User-Agent");
-
+        if(((org.hibernate.query.Query) em
+                .createQuery("SELECT c " +
+                        "FROM Connection c WHERE c.userHost =:h", Connection.class)
+                .setParameter("h", host)).list().isEmpty()) {
             Connection connection = new Connection();
             connection.setUserHost(host);
             connection.setUserAgent(agent);
 
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-            EntityManager em = emf.createEntityManager();
+
             em.getTransaction().begin();
             em.persist(connection);
             em.getTransaction().commit();
+        }
             out.println("<h1 align=\"center\">Servlet GET LIST OF CONNECTIONS method processing</h1>");
             out.println("<h3 align=\"center\">Request from: " + host  + "</h3>");
 
