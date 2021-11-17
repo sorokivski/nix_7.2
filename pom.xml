@@ -13,9 +13,9 @@
         <module>unit_14_concurrency</module>
         <module>unit_11_reflection</module>
         <module>unit_12_csv</module>
-        <module>unit_15_servlets</module>
         <module>module_3</module>
         <module>unit_13_jpa-hiberante</module>
+        <module>unit_15_servlet</module>
     </modules>
 
     <properties>
