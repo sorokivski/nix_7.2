@@ -16,6 +16,7 @@
         <module>module_3</module>
         <module>unit_13_jpa-hiberante</module>
         <module>unit_15_servlet</module>
+        <module>lab11db</module>
     </modules>
 
     <properties>
